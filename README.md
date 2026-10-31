@@ -1,54 +1,45 @@
-# FastAPI Application with Docker
+# 🐳 FastAPI + Docker: DevOps Hands-On Lab
 
-Isang web application na binuo gamit ang FastAPI at naka-containerize gamit ang Docker para sa madaling deployment at consistent na environment.
+**A FastAPI web app containerized with Docker for a consistent, deploy-anywhere environment.** My hands-on intro to containerization and DevOps workflows.
 
----
-
-## 🛠️ Requirements & Tech Stack
-
-* **Language/Framework:** Python, FastAPI
-* **Containerization:** Docker
-* **Prerequisites:** 
-  * Docker Desktop (kailangang nakabukas)
-  * Git
+![Python](https://img.shields.io/badge/Python-0d1117?style=for-the-badge&logo=python&logoColor=dc2626)
+![FastAPI](https://img.shields.io/badge/FastAPI-0d1117?style=for-the-badge&logo=fastapi&logoColor=dc2626)
+![Docker](https://img.shields.io/badge/Docker-0d1117?style=for-the-badge&logo=docker&logoColor=dc2626)
 
 ---
 
-## 🚀 Paano Patakbuhin (How to Run)
+## 🛠️ Tech Stack
 
-### 1. Clone ang Repository
-Buksan ang terminal/PowerShell at i-clone ang repo:
-git clone <ILAGAY_DITO_ANG_GITHUB_REPO_URL_MO>
-cd <PANGALAN_NG_FOLDER_MO>
+- **Language / Framework:** Python, FastAPI
+- **Containerization:** Docker
+- **Prerequisites:** Docker Desktop (running) and Git
 
-### 2. I-build ang Docker Image
-Bumuo ng Docker image gamit ang `Dockerfile`:
-docker build -t my-fastapi-app .
+## 🚀 Run it
 
-### 3. Patakbuhin ang Container
-I-run ang container sa background at i-map ang port 8000:
-docker run -d -p 8000:8000 --name fastapi-container my-fastapi-app
+```bash
+git clone https://github.com/n0zzzy/devops-hands-on-lab.git
+cd devops-hands-on-lab
 
-### 4. Access sa Application
-Kapag tumatakbo na ang container, buksan ang browser at pumunta sa:
-* **Main API:** http://localhost:8000
-* **Interactive Docs (Swagger UI):** http://localhost:8000/docs
+docker build -t devops-hands-on-lab .
+docker run -d -p 8000:8000 --name devops-lab devops-hands-on-lab
+```
+
+Open **http://localhost:8000**. Interactive API docs are at **http://localhost:8000/docs**.
+
+## 🧹 Clean up
+
+```bash
+docker stop devops-lab && docker rm devops-lab
+```
+
+## 📁 Files
+
+| File | Purpose |
+|---|---|
+| `main.py` | FastAPI application |
+| `requirements.txt` | Python dependencies |
+| `Dockerfile` | Container image definition |
 
 ---
 
-## 🛑 Management Commands
-
-### Tingnan ang Tumatakbong Container
-docker ps
-
-### I-stop ang Container
-docker stop fastapi-container
-
-### I-start Ulit ang Container
-docker start fastapi-container
-
-### Burahin ang Container (Clean Up)
-docker rm fastapi-container
-
-### Burahin ang Unused Containers / Images
-docker container prune
+<sub>Built by <a href="https://github.com/n0zzzy">Russel Carlo</a>.</sub>
